@@ -3,6 +3,7 @@ package com.Shinusei.DimPrison.mixins;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,9 +17,7 @@ public abstract class DimensionPrisonMixin {
         EntityPlayerMP player = (EntityPlayerMP) (Object) this;
 
         if (targetDimId != player.dimension) {
-            player.addChatMessage(new ChatComponentText(
-                EnumChatFormatting.RED + "Dimension travel is disabled."
-            ));
+            player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Dimension travel is disabled."));
             ci.cancel();
         }
     }
