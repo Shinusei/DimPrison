@@ -5,6 +5,7 @@ import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.Teleporter;
+import com.Shinusei.DimPrison.DimPrison;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -20,7 +21,9 @@ public abstract class DimensionTransferMixin {
         at = @At("HEAD"),
         cancellable = true)
     private void preventPlayerDimensionTransfer(EntityPlayerMP player, int targetDimension, CallbackInfo ci) {
-        dimprison$preventDimensionChange(player, targetDimension, ci);
+        if (DimPrison.dimensionLockEnabled) {
+            dimprison$preventDimensionChange(player, targetDimension, ci);
+        }
     }
 
     @Inject(
@@ -30,7 +33,9 @@ public abstract class DimensionTransferMixin {
         remap = false)
     private void preventPlayerDimensionTransferWithTeleporter(EntityPlayerMP player, int targetDimension,
         Teleporter teleporter, CallbackInfo ci) {
-        dimprison$preventDimensionChange(player, targetDimension, ci);
+        if (DimPrison.dimensionLockEnabled) {
+            dimprison$preventDimensionChange(player, targetDimension, ci);
+        }
     }
 
     @Unique

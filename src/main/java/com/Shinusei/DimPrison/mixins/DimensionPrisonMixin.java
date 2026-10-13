@@ -1,5 +1,6 @@
 package com.Shinusei.DimPrison.mixins;
 
+import com.Shinusei.DimPrison.DimPrison;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -14,11 +15,13 @@ public abstract class DimensionPrisonMixin {
 
     @Inject(method = "travelToDimension(I)V", at = @At("HEAD"), cancellable = true)
     private void onTravelToDimension(int targetDimId, CallbackInfo ci) {
-        EntityPlayerMP player = (EntityPlayerMP) (Object) this;
+        if (DimPrison.dimensionLockEnabled) {
+            EntityPlayerMP player = (EntityPlayerMP) (Object) this;
 
-        if (targetDimId != player.dimension) {
-            player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Dimension travel is disabled."));
-            ci.cancel();
+            if (targetDimId != player.dimension) {
+                player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Dimension travel is disabled."));
+                ci.cancel();
+            }
         }
     }
 }
