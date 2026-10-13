@@ -4,7 +4,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = DimPrison.MODID, version = DimPrison.VERSION)
+@Mod(modid = DimPrison.MODID, version = DimPrison.VERSION, acceptableRemoteVersions = "*")
 public class DimPrison {
 
     public static final String MODID = "dimprison";
