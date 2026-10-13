@@ -1,8 +1,10 @@
 package com.Shinusei.DimPrison.mixins;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldServer;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,6 +15,15 @@ import com.Shinusei.DimPrison.DimensionSpawnPoints;
 
 @Mixin(ServerConfigurationManager.class)
 public class WorldSpawnMixin {
+
+    @Redirect(
+        method = "createPlayerForUser",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/server/MinecraftServer;worldServerForDimension(I)Lnet/minecraft/world/WorldServer;"))
+    private WorldServer dimprison$createNewPlayersInConfiguredDimension(MinecraftServer server, int dimension) {
+        return server.worldServerForDimension(DimensionSpawnPoints.getRespawnDimensionId());
+    }
 
     @ModifyVariable(
         method = "respawnPlayer(Lnet/minecraft/entity/player/EntityPlayerMP;IZ)Lnet/minecraft/entity/player/EntityPlayerMP;",
