@@ -5,13 +5,14 @@ import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.Teleporter;
-import com.Shinusei.DimPrison.DimPrison;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.Shinusei.DimPrison.DimPrison;
 
 @Mixin(ServerConfigurationManager.class)
 public abstract class DimensionTransferMixin {

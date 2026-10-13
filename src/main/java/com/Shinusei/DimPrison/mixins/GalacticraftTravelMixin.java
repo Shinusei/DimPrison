@@ -1,6 +1,5 @@
 package com.Shinusei.DimPrison.mixins;
 
-import com.Shinusei.DimPrison.DimPrison;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
@@ -13,6 +12,8 @@ import org.spongepowered.asm.mixin.injection.Coerce;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import com.Shinusei.DimPrison.DimPrison;
 
 @Pseudo
 @Mixin(targets = "micdoodle8.mods.galacticraft.core.util.WorldUtil", remap = false)

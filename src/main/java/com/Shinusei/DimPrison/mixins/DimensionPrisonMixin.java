@@ -1,6 +1,5 @@
 package com.Shinusei.DimPrison.mixins;
 
-import com.Shinusei.DimPrison.DimPrison;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -9,6 +8,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.Shinusei.DimPrison.DimPrison;
 
 @Mixin(EntityPlayerMP.class)
 public abstract class DimensionPrisonMixin {

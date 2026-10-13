@@ -8,6 +8,9 @@
   "mixins": [
     "DimensionPrisonMixin",
     "DimensionTransferMixin",
-    "GalacticraftTravelMixin"
+    "GalacticraftTravelMixin",
+    "WorldSpawnMixin",
+    "WorldSpawnPointMixin",
+    "SetWorldSpawnDimensionMixin"
   ]
 }
