@@ -9,6 +9,8 @@
     "DimensionPrisonMixin",
     "DimensionTransferMixin",
     "GalacticraftTravelMixin",
+    "ServerUtilitiesTeleportMixin",
+    "SpawnCommandMixin",
     "WorldSpawnMixin",
     "WorldSpawnPointMixin",
     "SetWorldSpawnDimensionMixin"

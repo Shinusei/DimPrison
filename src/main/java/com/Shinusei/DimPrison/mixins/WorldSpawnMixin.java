@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import com.Shinusei.DimPrison.DimensionSpawnPoints;
+import com.llamalad7.mixinextras.sugar.Local;
 
 @Mixin(ServerConfigurationManager.class)
 public class WorldSpawnMixin {
@@ -30,8 +31,8 @@ public class WorldSpawnMixin {
         at = @At("HEAD"),
         argsOnly = true,
         name = "dimension")
-    private int dimprison$respawnInConfiguredDimension(int dimension) {
-        return DimensionSpawnPoints.getRespawnDimensionId();
+    private int dimprison$respawnInConfiguredDimension(int dimension, @Local(argsOnly = true, name = "player") EntityPlayerMP player) {
+        return player.getBedLocation(dimension) != null ? dimension : DimensionSpawnPoints.getRespawnDimensionId();
     }
 
     @Redirect(

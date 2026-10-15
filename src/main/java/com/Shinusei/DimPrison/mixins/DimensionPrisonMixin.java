@@ -19,7 +19,7 @@ public abstract class DimensionPrisonMixin {
         if (DimPrison.dimensionLockEnabled) {
             EntityPlayerMP player = (EntityPlayerMP) (Object) this;
 
-            if (targetDimId != player.dimension) {
+            if (targetDimId != player.dimension || (player.dimension == 1 && targetDimId == 1)) {
                 player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Dimension travel is disabled."));
                 ci.cancel();
             }
